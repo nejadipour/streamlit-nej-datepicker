@@ -71,7 +71,7 @@ class Config(BaseModel):
 
 
 class NejDatepicker:
-    def __call__(self, *args, config: Config, **kwargs):
+    def __call__(self, *args, config: Config = Config(), **kwargs):
         return_type = config.return_type
         selection_mode = config.selection_mode
         config = parse_config(config.dict())

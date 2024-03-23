@@ -9,8 +9,8 @@ The frontend uses
 [**@nejadipour/react-modern-datepicker**](https://github.com/nejadipour/react-modern-datepicker) as the React component.
 
 <div style="text-align: center;">
-<img src="img.png" alt="Logo">
-<img src="img2.png" alt="Logo">
+<img src="https://raw.githubusercontent.com/nejadipour/streamlit-nej-datepicker/main/img.png" alt="">
+<img src="https://raw.githubusercontent.com/nejadipour/streamlit-nej-datepicker/main/img2.png" alt="">
 </div>
 
 ## Installation

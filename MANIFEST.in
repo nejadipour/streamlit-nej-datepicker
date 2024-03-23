@@ -1,0 +1,1 @@
+recursive-include streamlit_nej_datepicker/frontend/dist *
