@@ -7,8 +7,8 @@ def main():
     st.title("Streamlit Nej Datepicker Demo")
 
     # Add your configuration here
-    config = Config(dark_mode=False, locale="en", disabled_days=[jdatetime.date.today()], color_primary="#ff4b4b",
-                    color_primary_light="#ff9494", selection_mode="bug")
+    config = Config(dark_mode=True, locale="en", disabled_days=[jdatetime.date.today()], color_primary="#ff4b4b",
+                    color_primary_light="#ff9494", selection_mode="range")
 
     result = datepicker_component(config=config)
 
