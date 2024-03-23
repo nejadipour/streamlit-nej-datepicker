@@ -28,7 +28,7 @@ import jdatetime
 
 
 def main():
-    st.title("NEJ Streamlit Datepicker Demo")
+    st.title("Streamlit Nej Datepicker Demo")
 
     # Add your configuration here
     config = Config(dark_mode=True, locale="en", disabled_days=[jdatetime.date.today()], color_primary="#ff4b4b",
