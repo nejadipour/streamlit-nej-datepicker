@@ -73,8 +73,10 @@ class Config(BaseModel):
 class NejDatepicker:
     def __call__(self, *args, config: Config, **kwargs):
         return_type = config.return_type
+        selection_mode = config.selection_mode
         config = parse_config(config.dict())
-        return parse_result(result=_component(config=config, args=args, **kwargs), return_type=return_type)
+        return parse_result(result=_component(config=config, args=args, **kwargs), return_type=return_type,
+                            selection_mode=selection_mode)
 
 
 datepicker_component = NejDatepicker()

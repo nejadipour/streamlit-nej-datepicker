@@ -1,18 +1,26 @@
 # streamlit-nej-datepicker
 
 ## Overview
+
 By the power of Streamlit that supports React,
 this is a modern date picker that can be used in any Streamlit app.
 It is configurable very easily and supports both Gregorian and Persian calendars.\
-The frontend uses 
+The frontend uses
 [**@nejadipour/react-modern-datepicker**](https://github.com/nejadipour/react-modern-datepicker) as the React component.
 
+<div style="text-align: center;">
+<img src="img.png" alt="Logo">
+<img src="img2.png" alt="Logo">
+</div>
+
 ## Installation
+
 ```bash
 pip install streamlit-nej-datepicker
 ```
 
 ## Usage
+
 ```python
 import streamlit as st
 from streamlit_nej_datepicker import datepicker_component, Config
@@ -23,7 +31,8 @@ def main():
     st.title("NEJ Streamlit Datepicker Demo")
 
     # Add your configuration here
-    config = Config(dark_mode=True, locale="en", disabled_days=[jdatetime.date.today()])
+    config = Config(dark_mode=True, locale="en", disabled_days=[jdatetime.date.today()], color_primary="#ff4b4b",
+                    color_primary_light="#ff9494", selection_mode="range")
 
     result = datepicker_component(config=config)
 
@@ -36,6 +45,7 @@ if __name__ == "__main__":
 ```
 
 ## Documentation
+
 You can use the Config class in order to configurate the component.
 Here is the table of props that you can define:
 
@@ -69,12 +79,16 @@ Here is the table of props that you can define:
 | slide_animation_duration  | str                                                                          | '0.4s'                                                 | Duration of month slide animation. It can be any CSS valid time value                                                                                                                                           |
 | trigger                   | str                                                                          | 'click'                                                | The trigger of the date picker to open/close it. It can be one of "click", "hover", "focus" or "contextMenu"                                                                                                    |
 
-**Note**: You can use both ```datetime.date``` and ```jdatetime.date``` objects for the props. The datepicker understands the value based on the locale.
+**Note**: You can use both ```datetime.date``` and ```jdatetime.date``` objects for the props. The datepicker
+understands the value based on the locale.
 
 ## Return Values
+
 The return value of the date picker depends on the selection mode.\
 If the selection mode is "single", the return value will be a datetime.date object.\
-If the selection mode is "range", the return value will be a dictionary with "from" and "to" keys. The value of each key is a datetime.date object.\
+If the selection mode is "range", the return value will be a dictionary with "from" and "to" keys. The value of each key
+is a datetime.date object.\
 If the selection mode is "multiple", the return value will be a list of datetime.date objects.
 
-**Note**: If the return type is set to ```jdatetime.date```, the return value will be a jdatetime.date object instead of a datetime.date object.
+**Note**: If the return type is set to ```jdatetime.date```, the return value will be a jdatetime.date object instead of
+a datetime.date object.

@@ -122,14 +122,45 @@ def parse_date_based_on_locale(date: Union[datetime.date, jdatetime.date], local
         raise ValueError("Invalid locale")
 
 
-def parse_result(result: dict, return_type: str = "datetime.date") -> None | datetime.date | jdatetime.date | None:
+def convert_dict_to_date(date: dict, return_type: str) -> datetime.date | jdatetime.date | None:
     """
     Parse the result based on the return_type
 
     Parameters
     ----------
+    date: dict
+        The result dictionary from the React component
+    return_type: str
+        The return type
+
+    Returns
+    -------
+    Union[datetime.date, jdatetime.date]
+        The parsed result
+    """
+    if date is None:
+        return None
+
+    year, month, day = date["year"], date["month"], date["day"]
+    date = datetime.date(year=year, month=month, day=day) if return_type == "datetime.date" else jdatetime.date(
+        year=year, month=month, day=day)
+
+    return date
+
+
+def parse_result(
+        result: Union[dict, list],
+        selection_mode: str,
+        return_type: str) -> None | datetime.date | jdatetime.date | list[datetime.date] | list[jdatetime.date] | dict:
+    """
+    Parse the result based on the selection mode
+
+    Parameters
+    ----------
     result: dict
         The result dictionary from the React component
+    selection_mode: str
+        The selection mode of datepicker that could be single, multiple or range
     return_type: str
         The return type
 
@@ -141,8 +172,12 @@ def parse_result(result: dict, return_type: str = "datetime.date") -> None | dat
     if result is None:
         return None
 
-    year, month, day = result["year"], result["month"], result["day"]
-    date = datetime.date(year=year, month=month, day=day) if return_type == "datetime.date" else jdatetime.date(
-        year=year, month=month, day=day)
-
-    return date
+    if selection_mode == "single":
+        return convert_dict_to_date(date=result, return_type=return_type)
+    elif selection_mode == "multiple":
+        return [convert_dict_to_date(date=date, return_type=return_type) for date in result]
+    elif selection_mode == "range":
+        return {key: convert_dict_to_date(date=value, return_type=return_type) for key, value in result.items()}
+    else:
+        # if selection mode is incorrect, React component deals with it like the single mode
+        return convert_dict_to_date(date=result, return_type=return_type)
