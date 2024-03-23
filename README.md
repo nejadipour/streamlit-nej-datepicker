@@ -4,9 +4,8 @@
 By the power of Streamlit that supports React,
 this is a modern date picker that can be used in any Streamlit app.
 It is configurable very easily and supports both Gregorian and Persian calendars.\
-The React date picker uses **react-modern-calendar-datepicker** by
-[@Kiarash-Z](https://github.com/Kiarash-Z) as base.
-Shout out to him for his great work.\
+The frontend uses 
+[**@nejadipour/react-modern-datepicker**](https://github.com/nejadipour/react-modern-datepicker) as the React component.
 
 ## Installation
 ```bash
@@ -15,15 +14,30 @@ pip install streamlit-nej-datepicker
 
 ## Usage
 ```python
+import streamlit as st
+from streamlit_nej_datepicker import datepicker_component, Config
+import jdatetime
+
+
+def main():
+    st.title("NEJ Streamlit Datepicker Demo")
+
+    # Add your configuration here
+    config = Config(dark_mode=True, locale="en", disabled_days=[jdatetime.date.today()])
+
+    result = datepicker_component(config=config)
+
+    if st.button('Print Result'):
+        st.write(result)
+
+
+if __name__ == "__main__":
+    main()
 ```
 
 ## Documentation
-You can find documentation of the React component [here](https://kiarash-z.github.io/react-modern-calendar-datepicker/).
-The point is that I have changed some of the props and added some new ones.
-So be sure to check the documentation of this package as well.\
-As you are going to use this package in your python code,
-the configuration of the date picker is a bit different from the react component.\
-Here is the table of props that you can use:
+You can use the Config class in order to configurate the component.
+Here is the table of props that you can define:
 
 | Prop                      | Type                                                                         | Default                                                | Description                                                                                                                                                                                                     |
 |---------------------------|------------------------------------------------------------------------------|--------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
