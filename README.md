@@ -10,7 +10,6 @@ The frontend uses
 
 <div style="text-align: center;">
 <img src="https://raw.githubusercontent.com/nejadipour/streamlit-nej-datepicker/main/img.png" alt="">
-<img src="https://raw.githubusercontent.com/nejadipour/streamlit-nej-datepicker/main/img2.png" alt="">
 </div>
 
 ## Installation
